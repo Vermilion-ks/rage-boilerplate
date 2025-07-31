@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rejoin Webview</title>
+  </head>
+  <body>
+    <div id="root" class="bg-transparent"></div>
+    <script>
+      window.devMode = true
+      window.browserOnly = (() => {
+        return !window.alt?.getVersion() ?? true
+      })()
+
+      if (window.browserOnly) {
+        const rootElClasses = document.getElementById('root').classList
+        rootElClasses.remove('bg-transparent')
+        rootElClasses.add('bg-[#333]')
+      }
+
+      window.alt = window.alt ?? {
+        on: () => {},
+        emit: (_, event, payload) => {
+          console.debug('[RPC]', event, '\n', JSON.stringify(payload))
+        },
+      }
+    </script>
+    <script type="module" src="./src/main.tsx"></script>
+  </body>
+</html>

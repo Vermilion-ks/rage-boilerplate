@@ -1,0 +1,26 @@
+services:
+  adminer:
+    image: ghcr.io/shyim/adminerevo:latest
+    restart: always
+    ports:
+      - "8080:8080"
+
+  db:
+    image: postgres:17
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test:
+        [ "CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}" ]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+      - POSTGRES_DB
+    volumes:
+      - rage-db-data:/var/lib/postgresql/data
+
+volumes:
+  rage-db-data:

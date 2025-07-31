@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+        "target": "ESNext",
+		"lib": ["ESNext", "ES2019"],
+		"moduleResolution": "Node",
+		"module": "ESNext",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"paths": {
+			"$server/*": ["./apps/server/src/*"],
+			"$client/*": ["./apps/client/src/*"],
+			"$webview/*": ["./apps/webview/src/*"],
+			"$shared/*": ["./apps/shared/src/*"]
+		}
+	},
+     "ts-node": {
+         "esm": true
+     }
+
+}

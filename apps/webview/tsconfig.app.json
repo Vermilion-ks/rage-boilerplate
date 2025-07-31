@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2021",
+    "useDefineForClassFields": true,
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "~": ["./src/"],
+      "~/*": ["./src/*"],
+      "~a": ["./src/assets-new"],
+      "~a/*": ["./src/assets-new/*"],
+      "~c": ["./src/components-new"],
+      "~c/*": ["./src/components-new/*"],
+      "~p": ["./src/pages-new"],
+      "~p/*": ["./src/pages-new/*"],
+      "@": ["./src/"],
+      "@/*": ["./src/*"]
+    },
+    "typeRoots": [
+      "../types/",
+      "../../node_modules/@altv",
+      "../../node_modules/@types",
+      "../../node_modules/altv-esbuild/altv-enums/types"
+    ]
+  },
+  "include": ["src"]
+}

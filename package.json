@@ -1,0 +1,40 @@
+{
+	"name": "rage-boilerplate",
+	"workspaces": ["apps/client", "apps/server", "apps/shared", "apps/webview"],
+	"scripts": {
+		"start": "cd server && ragemp-server.exe",
+		"[Build]": "",
+		"build:core": "pnpm exec tsx scripts/build.ts",
+		"build:webview": "cd apps/webview && pnpm run build",
+		"postinstall": "pnpm run prisma:generate && cd server && npx ragemp-pkg release ",
+		"[Database]": "",
+		"prisma:generate": "bunx prisma generate",
+		"prisma:apply:migrations": "bunx prisma migrate dev",
+		"prisma:reset:migrations": "bunx prisma migrate reset"
+	},
+	"prisma": {
+		"seed": "tsx prisma/seed.ts"
+	},
+	"dependencies": {
+		"dotenv": "^16.4.5",
+		"prisma": "5.5.2",
+		"prisma-json-types-generator": "^3.1.1",
+		"rage-rpc": "github:Yoegibby/rage-rpc#rage1.1_fixes",
+		"ragemp-pkg": "latest"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@prisma/client": "5.5.2",
+		"@types/lodash": "^4.17.13",
+		"@types/node": "^20.16.11",
+		"concurrently": "^9.1.0",
+		"esbuild": "latest",
+		"esbuild-copy-static-files": "^0.1.0",
+		"husky": "^9.1.7",
+		"tsx": "^4.20.3"
+	},
+	"peerDependencies": {
+		"typescript": "^5.6.3"
+	},
+	"trustedDependencies": ["@biomejs/biome", "esbuild"]
+}
