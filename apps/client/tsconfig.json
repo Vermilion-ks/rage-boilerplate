@@ -3,6 +3,10 @@
     "compilerOptions": {
   "types": ["@ragempcommunity/types-client"],
   "baseUrl": "./src",
-  "composite": true
+  "composite": true,
+  "lib": [
+      "es6",
+      "dom"
+    ],
 }
 }

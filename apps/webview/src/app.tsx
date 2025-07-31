@@ -1,12 +1,10 @@
-// sort-imports-ignore
+import Router from './routes'
 import { Toaster } from 'react-hot-toast'
-
 export function App() {
-
     return (
         <>
 
-            Hello RAGE
+            <Router />
             <Toaster
                 position='top-center'
                 toastOptions={{
