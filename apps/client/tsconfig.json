@@ -1,0 +1,8 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+  "types": ["@ragempcommunity/types-client"],
+  "baseUrl": "./src",
+  "composite": true
+}
+}
