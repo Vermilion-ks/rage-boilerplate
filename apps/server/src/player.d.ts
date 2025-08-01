@@ -9,6 +9,6 @@ interface PlayerMp {
 
 interface Player {
     readonly mp: PlayerMp
-    dbId: number
+    uuid: number
     performing: boolean
 }

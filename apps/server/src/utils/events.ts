@@ -40,7 +40,7 @@ class Events {
                 if (
                     !player ||
                     player.performing ||
-                    (authorized && !player.dbId)
+                    (authorized && !player.uuid)
                 ) {
                     eventLogs.info(name)
                     return new Promise((res, rej) => {})
@@ -81,7 +81,7 @@ class Events {
                     const [entity, ...data] = args
                     const player = mp.players.get(entity)
 
-                    if (authorized && !player?.dbId) return
+                    if (authorized && !player?.uuid) return
 
                     callback(player, ...data)
                 } catch (err) {

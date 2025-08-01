@@ -66,7 +66,7 @@ interface EventMpPool {
 }
 interface PlayerMpPool {
     get(player: PlayerMp | number): Player
-    getByDbId(id: number): Player
+    getByUUID(id: number): Player
     delete(id: number): void
 
     toCustomArray(authorized?: boolean): Player[]
@@ -76,7 +76,7 @@ interface PlayerMpPool {
 
 interface VehicleMpPool {
     getById(id: number): VehicleMp
-    authorize(vehicle: VehicleMp, dbId: number): void
+    authorize(vehicle: VehicleMp, uuid: number): void
     delete(vehicle: VehicleMp): void
 }
 

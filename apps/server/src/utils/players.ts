@@ -18,7 +18,7 @@ class Players {
             playerJoin: this.add.bind(this),
         })
         mp.players.get = this.get.bind(this)
-        mp.players.getByDbId = this.getByDbId.bind(this)
+        mp.players.getByUUID = this.getByUUID.bind(this)
         mp.players.delete = this.delete.bind(this)
     }
 
@@ -28,7 +28,7 @@ class Players {
         return mp.players.exists(target) ? this.items.get(target.id) : null
     }
 
-    getByDbId(id: number) {
+    getByUUID(id: number) {
         return id && this.authorized.get(id)
     }
 
@@ -37,13 +37,13 @@ class Players {
 
         if (player) {
             this.items.delete(id)
-            this.authorized.delete(player.dbId)
+            this.authorized.delete(player.uuid)
         }
     }
 
     authorize(player: Player) {
-        if (!player.dbId) return
-        this.authorized.set(player.dbId, player)
+        if (!player.uuid) return
+        this.authorized.set(player.uuid, player)
     }
 
     private add(player: PlayerMp) {
