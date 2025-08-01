@@ -1,7 +1,5 @@
 import * as yup from 'yup'
 
-// TODO: validation
-
 type LoginSchemaType = {
     email: string
     password: string
@@ -18,14 +16,12 @@ const loginSchema = yup.object<LoginSchemaType>({
 
 type RegisterSchemaType = {
     email: string
-    confirmationCode: string
     password: string
     repeatPassword: string
 }
 
 const registerSchema = yup.object<RegisterSchemaType>({
     email: yup.string().required('emailRequired').min(6).email('emailInvalid'),
-    confirmationCode: yup.string().required('codeRequired').length(8),
     password: yup.string().required('passwordShort').min(6, 'passwordShort'),
     repeatPassword: yup
         .string()
@@ -63,29 +59,17 @@ type CharacterNameSchemaType = {
     lastName: string
 }
 
-const graffitySchema = yup.object({
-    text: yup
-        .string()
-        .required('textMissing')
-        .min(3, 'textMissing')
-        .matches(/^[a-zA-Z]+$/, 'onlyLatinLetters'),
-})
 
-type GraffitySchemaType = {
-    text: string
-}
 
 export {
     loginSchema,
     registerSchema,
     recoverSchema,
     characterNameSchema,
-    graffitySchema,
 }
 export type {
     RegisterSchemaType,
     LoginSchemaType,
     RecoverSchemaType,
     CharacterNameSchemaType,
-    GraffitySchemaType,
 }

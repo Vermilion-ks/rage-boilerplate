@@ -1,11 +1,11 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-    "types": ["./node_modules/@ragempcommunity/types-client"],
+    "types": ["./node_modules/@ragempcommunity/types-server"],
     "baseUrl": "./src",
     "composite": true,
     "lib": [
-        "es6",
+        "es2017",
         "dom"
     ]
     },

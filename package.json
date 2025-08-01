@@ -1,6 +1,11 @@
 {
 	"name": "rage-boilerplate",
-	"workspaces": ["apps/client", "apps/server", "apps/shared", "apps/webview"],
+	"workspaces": [
+		"apps/client",
+		"apps/server",
+		"apps/shared",
+		"apps/webview"
+	],
 	"scripts": {
 		"start": "cd server && ragemp-server.exe",
 		"[Build]": "",
@@ -19,15 +24,21 @@
 		"seed": "tsx prisma/seed.ts"
 	},
 	"dependencies": {
+		"chalk": "^5.4.1",
 		"dotenv": "^16.4.5",
+		"lodash": "^4.17.21",
 		"prisma": "5.5.2",
 		"prisma-json-types-generator": "^3.1.1",
 		"rage-rpc": "github:Yoegibby/rage-rpc#rage1.1_fixes",
-		"ragemp-pkg": "latest"
+		"ragemp-pkg": "latest",
+		"winston": "^3.17.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"@prisma/client": "5.5.2",
+		"@ragempcommunity/types-cef": "latest",
+		"@ragempcommunity/types-client": "latest",
+		"@ragempcommunity/types-server": "latest",
 		"@types/lodash": "^4.17.13",
 		"@types/node": "^20.16.11",
 		"concurrently": "^9.1.0",
@@ -39,5 +50,8 @@
 	"peerDependencies": {
 		"typescript": "^5.6.3"
 	},
-	"trustedDependencies": ["@biomejs/biome", "esbuild"]
+	"trustedDependencies": [
+		"@biomejs/biome",
+		"esbuild"
+	]
 }

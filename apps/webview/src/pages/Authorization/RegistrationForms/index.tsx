@@ -100,7 +100,6 @@ const RegistrationForms: FC<Props> = ({ email, onTabSwitch }) => {
         const data = {
             email: values.email.trim().toLowerCase(),
             password: values.password.trim(),
-            code: values.confirmationCode.trim(),
         }
 
         rpc.callServer('Auth-SignUp', data)
