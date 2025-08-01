@@ -2,10 +2,12 @@
 	"name": "rage-boilerplate",
 	"workspaces": ["apps/client", "apps/server", "apps/shared", "apps/webview"],
 	"scripts": {
+		"[Start]": "",
 		"start": "cd server && ragemp-server.exe",
 		"[Build]": "",
 		"build:core": "pnpm exec tsx scripts/build.ts",
 		"build:webview": "cd apps/webview && pnpm run build",
+		"build:all": "pnpm run build:core && pnpm run build:webview",
 		"postinstall": "pnpm run prisma:generate && cd server && npx ragemp-pkg release ",
 		"[Database]": "",
 		"prisma:generate": "bunx prisma generate",

@@ -1,13 +1,28 @@
 # Installation
 
-Run `bun install`
+Install global dependencies:
+`npm install -g pnpm`
+`npm i tsx -g`
 
-Run `docker compose -f docker-compose.dev.yml up -d`
+Download and install Node.js v20.18.3 [link](https://nodejs.org/en/download)
 
-Run `bun run prisma:generate` and `bun run prisma:apply:migrations`
+Download and install Docker Desktop [link](https://www.docker.com)
+
+Rename the .env.example files to .env:
+- One in the project root
+- One inside the `server/` folder
+
+Install project dependencies:
+`pnpm install`
+
+Start Docker containers:
+`docker compose -f docker-compose.yml up -d`
+
+# Build
+
+`pnpm run build:all`
 
 # Startup
 
-Build project: `bun run build:all`
+`pnpm run start`
 
-To start a project: `bun run watch` and `bun run dev-binary`

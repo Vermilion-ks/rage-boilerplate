@@ -178,7 +178,15 @@ dist
 .vscode
 
 # Server
-server/*
+server/bin/*
+server/node_modules/
+server/.env
+server/maps
+server/client_packages
+server/packages
+server/plugins
+server/BugTrap-x64.dll
+server/ragemp-server.exe
 
 
 #!server/.altvpkgrc.json
