@@ -1,0 +1,55 @@
+@use '../../data/styles/components.colors' as g;
+$background-slider: url('../../assets/bg-slider.png');
+
+.wrapper {
+  display: flex;
+  height: 70px;
+  width: 100%;
+}
+
+.range {
+  -webkit-appearance: none;
+
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: 55px;
+  background: $background-slider no-repeat center / cover;
+
+  //background-color: g.$range-bg !important;
+
+  &::-webkit-slider-runnable-track {
+    height: 13px;
+    border: none;
+    border-radius: 3px;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: g.$range-bg-thumb;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    border-radius: 3px;
+  }
+}
+
+.divider {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 1px;
+  height: 20px;
+  background: g.$range-bg-divider;
+  border-radius: 5px;
+}

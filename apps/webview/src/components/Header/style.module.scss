@@ -1,0 +1,52 @@
+@use '../../data/styles/fonts' as f;
+@use '../../data/styles/components.colors' as g;
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.7);
+
+  .preheader {
+    display: flex;
+    padding: 7px 10px;
+    font-family: f.$main;
+    font-size: 18px;
+    font-weight: 500;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.7);
+
+    background: g.$header-bg-pre;
+  }
+
+  h1 {
+    display: flex;
+
+    font-family: f.$sec;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0;
+    line-height: 40px;
+  }
+
+  .postheader {
+    display: flex;
+
+    line-height: 20px;
+    font-family: f.$main;
+    font-weight: 400;
+    font-size: 18px;
+    color: g.$header-text-post;
+  }
+
+  .green {
+    color: g.$header-text-main;
+  }
+
+  .orange {
+    color: g.$header-text-secondary;
+  }
+
+  .white {
+    color: g.$header-text-light;
+  }
+}

@@ -10,11 +10,10 @@
 		"forceConsistentCasingInFileNames": true,
 		"isolatedModules": true,
 		"paths": {
-			"$server/*": ["./apps/server/src/*"],
-			"$client/*": ["./apps/client/src/*"],
-			"$webview/*": ["./apps/webview/src/*"],
-			"$shared/*": ["./apps/shared/src/*"]
-		}
+      "@rage/shared": ["apps/shared"],
+      "@rage/shared/*": ["apps/shared/*"]
+    },
+		"baseUrl": ".",
 	},
      "ts-node": {
          "esm": true

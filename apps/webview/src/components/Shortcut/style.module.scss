@@ -1,0 +1,22 @@
+@use '../../data/styles/fonts' as f;
+@use '../../data/styles/components.colors' as g;
+
+.shortcut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+
+  background-image: url('../../assets/hud/icon-hint-bg.png'); //g.$shortcut-bg;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border-radius: 3px;
+  padding-bottom: 3px;
+
+  color: g.$shortcut-key;
+  font-family: f.$main;
+  font-size: 14px;
+  font-weight: 700;
+}

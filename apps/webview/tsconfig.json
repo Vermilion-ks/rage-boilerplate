@@ -1,7 +1,47 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+    "compilerOptions": {
+        "composite": true,
+        // build settings
+        "target": "esnext",
+        "useDefineForClassFields": true,
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "module": "esnext",
+        "skipLibCheck": true,
+        "removeComments": true,
+
+        // mutations
+        "allowJs": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "useUnknownInCatchVariables": false,
+        "forceConsistentCasingInFileNames": true,
+
+        // bundler
+        "moduleResolution": "node",
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "sourceMap": false,
+
+        // linting
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "typeRoots": ["./node_modules/@types/"],
+        "baseUrl": "./src",
+        "paths": {
+            "@/*": ["./*"],
+            "$/*": ["./*"]
+        }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"],
+    "references": [
+        {
+            "path": "./tsconfig.node.json"
+        }
+    ]
 }

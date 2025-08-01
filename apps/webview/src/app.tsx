@@ -1,5 +1,6 @@
 import Router from './routes'
 import { Toaster } from 'react-hot-toast'
+import './data/styles/index.scss'
 export function App() {
     return (
         <>
@@ -12,9 +13,11 @@ export function App() {
                     style: {
                         boxShadow: 'none',
                         background: 'none',
-                        padding: 0,
+                        padding: 10,
                         margin: 0,
-                        maxWidth: 'unset',
+                        maxWidth: '400px',
+                        minHeight: '50px',
+
                     },
                     className: 'w-95',
                 }}

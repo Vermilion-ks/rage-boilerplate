@@ -1,14 +1,14 @@
 import { FC, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
-import rpc from 'rage-rpc'
+import rpc from '@/utils/rpc'
 
 
 const Initial: FC = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        rpc.register('Browser-ShowPage', (page, data) => {
+        rpc.register<string>('Browser-ShowPage', (page, data) => {
             navigate(page, { state: data })
         })
     }, [])

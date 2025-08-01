@@ -1,0 +1,89 @@
+@use '../../data/styles/fonts' as f;
+@use '../../data/styles/components.colors' as g;
+@use '../../data/styles/animations' as a;
+
+.glow_wrapper {
+  all: unset;
+  max-height: 74px;
+  font-size: 18px;
+  font-weight: 500 !important;
+  font-family: f.$main;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-radius: 1px;
+
+  // Добавление overflow для предотвращения выхода кнопки за пределы
+  overflow: hidden;
+}
+
+.scaleOnHover {
+  @include a.scale(1.01);
+}
+
+.orange_glow {
+  background: g.$button-bg-orange;
+  color: g.$button-text-orange;
+  filter: drop-shadow(10px 10px 10px g.$button-bg-orange-filter);
+  transition: a.$transition;
+  min-height: 75px;
+
+  // Трансформация при наведении
+  &:hover {
+    background: g.$button-bg-orange-hover;
+    color: g.$button-text-orange-hover;
+    box-shadow: 0 0 2px 1px g.$button-bg-orange-hover;
+
+    transition: a.$transition;
+    cursor: pointer;
+    transform: scale(1.02); // Увеличение на 5%
+  }
+}
+
+.green_glow {
+  background: g.$button-bg-green;
+  color: g.$button-text-green;
+  text-align: center;
+  filter: drop-shadow(10px 10px 10px g.$button-bg-green-filter);
+  min-height: 75px;
+
+  transition: a.$transition;
+
+  // Трансформация при наведении
+  &:hover {
+    background: g.$button-bg-green-hover;
+    color: g.$button-text-green-hover;
+    box-shadow: 0 0 3px 1px g.$button-bg-green-hover;
+
+    transition: a.$transition;
+    cursor: pointer;
+    transform: scale(1.02); // Увеличение на 5%
+  }
+}
+
+.opacity {
+  all: unset;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  height: 48px;
+  font-size: 18px;
+  background: g.$button-bg-opacity;
+  color: g.$button-text-opacity;
+  font-family: f.$main;
+  font-weight: 500;
+  transition: a.$transition;
+  cursor: pointer;
+
+  &:hover {
+    transition: a.$transition;
+    background: g.$button-bg-opacity-hover;
+    color: g.$button-text-opacity-hover;
+    transform: scale(1.00); // Увеличение на 5%
+  }
+}

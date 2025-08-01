@@ -1,50 +1,91 @@
-
+import path from 'path'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
-import dotenv from 'dotenv'
-import jotaiDebugLabel from 'jotai/babel/plugin-debug-label'
-import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh'
-import * as path from 'node:path'
-//import autoprefixer from 'autoprefixer'
-import { defineConfig } from 'vite'
-import svgr from 'vite-plugin-svgr'
+import autoprefixer from 'autoprefixer'
 
-dotenv.config()
+// https://vitejs.dev/config/
+export default defineConfig(({ mode }) => {
+    const env = loadEnv(mode, path.join(process.cwd(), '../../'), '')
 
-// biome-ignore lint/style/noDefaultExport: implicit
-export default defineConfig({
-    base: './',
-    server: {
-        host: process.env.VITE_DEV_PATH || 'localhost',
-        port: 5173,
-    },
-    build: {
-        emptyOutDir: true,
-        outDir: path.join(
-            __dirname,
-            '..',
-            '..',
-            'server',
-            'client_packages',
-            'cef'
-        ),
-        rollupOptions: {
-            input: {
-                main: 'index.html',
+    if (env.VITE_MODE === 'dev') {
+        return {
+            build: {
+                target: 'esnext',
+                minify: false,
+                outDir: path.join('../../', 'server', 'client_packages', 'cef'),
+                emptyOutDir: true,
+                rollupOptions: {
+                    external: [path.join('./src', 'assets', '*')],
+                },
             },
-        },
-        chunkSizeWarningLimit: 10000, 
-    },
-    plugins: [
-        react({
-            babel: {
-                plugins: [jotaiDebugLabel, jotaiReactRefresh],
+            plugins: [react()],
+            css: {
+                postcss: {
+                    plugins: [autoprefixer()],
+                },
             },
-        }),
-        svgr(),
-    ],
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, './src/'),
-        },
-    },
+            resolve: {
+                alias: [
+                    {
+                        find: '@',
+                        replacement: path.resolve(__dirname, './src/'),
+                    },
+                    {
+                        find: /^\$\/assets\/clothes\/.*\/[^\/]*$/,
+                        replacement: path.resolve(
+                            __dirname,
+                            './src/assets/clothes/custom/female/1/0-0.png',
+                        ),
+                    },
+                ],
+            },
+        }
+    } else if (env.VITE_MODE === 'production') {
+        return {
+            build: {
+                target: 'esnext',
+                minify: false,
+                outDir: path.join('../../', 'server', 'client_packages', 'cef'),
+                emptyOutDir: true,
+            },
+            plugins: [react()],
+            css: {
+                postcss: {
+                    plugins: [autoprefixer()],
+                },
+            },
+            resolve: {
+                alias: [
+                    {
+                        find: '@',
+                        replacement: path.resolve(__dirname, './src/'),
+                    },
+                    {
+                        find: '$',
+                        replacement: path.resolve(__dirname, './src/'),
+                    },
+                ]
+            },
+        }
+    } else {
+        return {
+            build: {
+                target: 'esnext',
+                rollupOptions: {
+                    external: ['rage-rpc', 'rpc'],
+                },
+            },
+            plugins: [react()],
+            css: {
+                postcss: {
+                    plugins: [autoprefixer()],
+                },
+            },
+            resolve: {
+                alias: {
+                    '@': path.resolve(__dirname, './src/'),
+                },
+            },
+        }
+    }
 })

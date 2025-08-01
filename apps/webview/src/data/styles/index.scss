@@ -1,0 +1,39 @@
+@use './mixins' as m;
+@use './fonts' as f;
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    font-family: f.$main;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+a {
+    color: inherit;
+}
+
+#root {
+    display: flex;
+    position: relative;
+    height: 100svh;
+    width: 100vw;
+    background: transparent;
+
+    & > * {
+        display: flex;
+        width: 100vw;
+        height: 100svh;
+    }
+}
+
+@include m.font('Gilroy', 400, './fonts/Gilroy-Regular');
+@include m.font('Gilroy', 500, './fonts/Gilroy-Medium');
+@include m.font('Gilroy', 600, './fonts/Gilroy-SemiBold');
+@include m.font('Gilroy', 700, './fonts/Gilroy-Bold');
+@include m.font('AgencyFB', 400, './fonts/AgencyFB-Regular');
+@include m.font('AgencyFB', 700, './fonts/AgencyFB-Bold');

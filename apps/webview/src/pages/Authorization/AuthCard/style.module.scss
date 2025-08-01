@@ -1,0 +1,13 @@
+@use '../../../data/styles/pages/authorization.colors' as c;
+@use '../../../data/styles/animations' as a;
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    background: c.$background;
+    padding: 34px 54px 0;
+    gap: 16px;
+    @include a.slowZoomIn(0.8s);
+}

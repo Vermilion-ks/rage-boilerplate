@@ -1,0 +1,71 @@
+@use '../../data/styles/fonts' as f;
+@use '../../data/styles/components.colors' as g;
+@use '../../data/styles/animations' as a;
+
+.input_root {
+  display: flex;
+  box-sizing: border-box;
+  background-color: g.$input-bg;
+  padding: 15px 25px;
+  border: 1px solid rgb(91, 91, 91);
+  border-radius: 5px;
+  transition: border-color 0.4s ease;
+
+  .input_wrapper {
+    display: flex;
+    flex: 1;
+    position: relative;
+    flex-direction: column;
+
+    .green_mark {
+      position: absolute;
+      left: -33px;
+      top: 50%;
+      transform: translateY(-50%);
+      filter: drop-shadow(0 0 3px g.$input-bg-confirmed);
+    }
+
+    .label {
+      font-family: f.$main;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 16px;
+      text-align: left;
+
+      color: g.$input-text-label;
+    }
+
+    .input {
+      all: unset;
+      display: flex;
+
+      font-family: f.$main;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 20px;
+      text-align: left;
+      height: 28px !important;
+
+      &::placeholder {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .password_show_wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    padding-left: 10px;
+  }
+
+  //&.focused {
+  //    border: 2px solid g.$input-text-label;
+  //    padding: 13px 23px;
+  //    border-radius: 4px;
+  //}
+  &:hover {
+    border-color: g.$input-border; // цвет бордера при наведении
+  }
+}
