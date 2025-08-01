@@ -11,7 +11,7 @@ async function buildServer() {
 		target: "node14",
 		plugins: [
 			copyStaticFiles({
-				src: "./node_modules/.prisma/client",
+				src: "./node_modules/@prisma/client",
 				dest: "./server/node_modules/.prisma/client",
 			}),
 		],
