@@ -1,4 +1,6 @@
 
+import { prisma } from "../db";
+import { executeNotification } from "../utils/notifications";
 
 class RegistrationController {
        constructor() {
@@ -11,7 +13,13 @@ class RegistrationController {
        }
 
        private async handleSignUp(player: Player, data: {email: string; password: string;}) {
-           console.log('SignUp request received:', { player, email: data.email, password: data.password });
+        const user = await prisma.user.findFirst({
+			where: { email: data.email },
+		});
+        if (user) {
+			executeNotification(player, "auth.emailUsed", "error");
+			return false;
+		}
        }
 }
 

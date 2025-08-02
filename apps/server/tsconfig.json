@@ -1,12 +1,17 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-    "types": ["@ragempcommunity/types-server"],
-    "baseUrl": "./src",
-    "composite": true,
-    "lib": [
-        "es2017",
-        "dom"
-    ]
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../..",
+    "paths": {
+      "@rage/shared": ["apps/shared/index.ts"],
+      "@rage/shared/*": ["apps/shared/*"]
     },
+    "types": ["@ragempcommunity/types-server"],
+    "composite": true,
+    "lib": ["es2017", "dom"]
+  },
+  "include": [
+    "src/**/*",          
+    "../shared/**/*"      
+  ]
 }

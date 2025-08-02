@@ -1,7 +1,9 @@
 import rpc from 'rage-rpc'
 import { isArray } from 'lodash'
-import { ClientError, SilentError } from 'utils/errors'
-import logger from 'utils/logger'
+
+import logger from './logger'
+import { ClientError } from './errors'
+
 
 const eventLogs = logger.create('events')
 

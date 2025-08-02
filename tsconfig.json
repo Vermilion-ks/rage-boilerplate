@@ -10,9 +10,9 @@
 		"forceConsistentCasingInFileNames": true,
 		"isolatedModules": true,
 		"paths": {
-      "@rage/shared": ["apps/shared"],
-      "@rage/shared/*": ["apps/shared/*"]
-    },
+			"@rage/shared": ["apps/shared/index.ts"],
+			"@rage/shared/*": ["apps/shared/*"]
+   	 },
 		"baseUrl": ".",
 	},
      "ts-node": {

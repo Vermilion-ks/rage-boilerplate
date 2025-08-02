@@ -1,5 +1,5 @@
+import { NotificationType } from '@rage/shared'
 import { toast, ToastOptions } from 'react-hot-toast'
-import { Notification as NotificationType } from '@rage/shared'
 
 const baseOptions: ToastOptions = {
     style: {
@@ -36,22 +36,8 @@ const warningOptions: ToastOptions = {
     },
 }
 
-const loadingOptions: ToastOptions = {
-    ...baseOptions,
-    style: {
-        ...baseOptions.style,
-        border: '1px solid #2196F3',
-    },
-}
-
-
 export function notification(
-    type:
-        | NotificationType
-        | 'success'
-        | 'error'
-        | 'warning'
-        | 'loading',
+    type: NotificationType,
     message: string,
 ) {
     switch (type) {
@@ -61,8 +47,6 @@ export function notification(
             return error(message)
         case 'warning':
             return warning(message)
-        case 'loading':
-            return loading(message)
     }
 }
 
@@ -78,9 +62,6 @@ function warning(message: string) {
     toast(message, warningOptions)
 }
 
-function loading(message: string) {
-    toast.loading(message, loadingOptions)
-}
 
 export default notification
 export type Notification = NotificationType

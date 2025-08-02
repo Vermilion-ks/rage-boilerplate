@@ -2,11 +2,19 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
     "types": ["@ragempcommunity/types-client"],
-    "baseUrl": "./src",
+    "baseUrl": "../..",
+    "paths": {
+      "@rage/shared": ["apps/shared/index.ts"],
+      "@rage/shared/*": ["apps/shared/*"]
+    },
     "composite": true,
     "lib": [
         "es6",
         "dom"
     ]
     },
+    "include": [
+    "src/**/*",          
+    "../shared/**/*"      
+  ]
 }

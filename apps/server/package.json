@@ -1,9 +1,5 @@
 {
   "name": "@rage/server",
   "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-
-    "@ragempcommunity/types-server": "latest"
-  }
+  "private": true
 }

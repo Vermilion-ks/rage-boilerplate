@@ -1,6 +1,5 @@
 import { isNumber } from 'lodash'
-import events from './events'
-import PlayerEntity from 'player/playerEntity'
+import PlayerEntity from '../player/playerEntity'
 
 class Players {
     private items: Map<number, Player>
