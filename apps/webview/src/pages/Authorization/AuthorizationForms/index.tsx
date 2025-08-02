@@ -10,10 +10,9 @@ import notification from '@/utils/notification.ts'
 
 type Props = {
     email: string
-    handleLogin: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const AuthorizationForms: FC<Props> = ({ email, handleLogin }) => {
+const AuthorizationForms: FC<Props> = ({ email }) => {
     const { t } = useTranslation()
 
     return (
@@ -78,13 +77,8 @@ const AuthorizationForms: FC<Props> = ({ email, handleLogin }) => {
         </>
     )
 
-    function handleSubmit(values: LoginSchemaType) {
-        rpc.callServer('Auth-SignIn', Object.values(values))
-            .then(() => {
-                handleLogin(true)
-                return new Promise(resolve => setTimeout(resolve, 1000))
-            })
-            .then(() => rpc.callClient('Auth-SuccessLogin', values.email))
+    async function handleSubmit(values: LoginSchemaType) {
+        await rpc.callServer('Auth-SignIn', Object.values(values))
             .catch(e => notification(e.type, e.message))
     }
 }

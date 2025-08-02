@@ -13,21 +13,6 @@ class Events {
         mp.events.reject = this.reject
     }
 
-    async callClient(
-        player: PlayerMp,
-        name: string,
-        args?: any,
-        pending = false,
-    ) {
-        const promise = rpc.callClient(player, name, args, { noRet: !pending })
-
-        if (pending) {
-            const response = await promise
-
-            return response?.err ? Promise.reject(response?.err) : response
-        }
-    }
-
     reject(reason: any) {
         return Promise.reject(new ClientError(reason))
     }

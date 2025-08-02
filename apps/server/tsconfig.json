@@ -10,6 +10,9 @@
 			"$webview/*": ["./apps/webview/src/*"],
 			"$shared/*": ["./apps/shared/src/*"]
     },
+    "typeRoots": [
+      "./src/declarations/*",
+    ],
     "types": ["@ragempcommunity/types-server"],
     "composite": true,
     "lib": ["es2017", "dom"]

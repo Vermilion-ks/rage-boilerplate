@@ -102,15 +102,12 @@ const RegistrationForms: FC<Props> = ({ email, onTabSwitch }) => {
             password: values.password.trim(),
         }
 
-        await rpc.callServer('Auth-SignUp', data)
-            // .then(() => {
-            //     return rpc.callClient('Auth-SuccessRegister', data.email)
-            // })
-            .then(() => {
-                notification('success', t(`notification.successRegister`))
-                onTabSwitch(0)
-            })
+        const response = await rpc.callServer('Auth-SignUp', data)
             .catch(e => notification(e.type, e.message))
+        if (response) {
+            notification('success', t(`notification.successRegister`))
+            onTabSwitch(0)
+        }
     }
 
 }

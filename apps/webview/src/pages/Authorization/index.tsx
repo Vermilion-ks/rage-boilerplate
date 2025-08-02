@@ -15,7 +15,6 @@ type State = {
 
 const Auth: FC = () => {
     const state = useLocation().state as State
-    const [isDisappearing, setIsDisappearing] = useState(false)
     const [email] = useState(state?.email ?? '')
     const [language] = useState(state?.language ?? 'en')
     const [activeTab, setActiveTab] = useState(0)
@@ -25,13 +24,12 @@ const Auth: FC = () => {
     return (
         <main className={s.container}>
             <section
-                className={`${s.leftPanel} ${isDisappearing ? s.leftPanelSlideOut : ''}`}
+                className={`${s.leftPanel}`}
             >
                 <TabSwitcher status={activeTab} setActiveTab={setActiveTab} />
                 {activeTab === 0 ? (
                     <AuthorizationForms
                         email={email}
-                        handleLogin={setIsDisappearing}
                     />
                 ) : activeTab === 2 ? (
                     <RecoveryForms

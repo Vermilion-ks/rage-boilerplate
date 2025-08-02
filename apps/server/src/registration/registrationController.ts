@@ -1,7 +1,6 @@
-import { prisma } from "$server/db";
+import { prisma } from "$server/database/databaseHandler";
 import { executeNotification } from "$server/utils/notifications";
 import { registrationHandler } from "./registrationHandler";
-
 
 class RegistrationController {
 	constructor() {

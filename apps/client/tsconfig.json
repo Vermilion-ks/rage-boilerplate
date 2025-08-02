@@ -7,6 +7,9 @@
       "@rage/shared": ["apps/shared/index.ts"],
       "@rage/shared/*": ["apps/shared/*"]
     },
+    "typeRoots": [
+      "./src/declarations/*",
+    ],
     "composite": true,
     "lib": [
         "es6",
