@@ -1,23 +1,18 @@
-import { context } from "esbuild";
 import chokidar from "chokidar";
+import { context } from "esbuild";
 import filelocPluginModule from "esbuild-plugin-fileloc";
 
 const { filelocPlugin } = filelocPluginModule;
 
 const logSuccess = (name) => {
-	console.log(`✅ ${name} rebuilt at ${new Date().toLocaleTimeString()}`);
+	console.log(`✅ ${name} rebuilt successfully!`);
 };
 
 const logError = (name, error) => {
 	console.error(`❌ ${name} rebuild failed:\n`, error);
 };
 
-const reload = () => {
-	console.log("🔄 Reloading server...");
-};
-
-// biome-ignore lint/style/useDefaultParameterLast: <explanation>
-async function watchTarget(name, entry, out, opts = {}, watchPath) {
+async function watchTarget(name, entry, out, opts, watchPath) {
 	const ctx = await context({
 		entryPoints: [entry],
 		bundle: true,
@@ -38,7 +33,7 @@ async function watchTarget(name, entry, out, opts = {}, watchPath) {
 			try {
 				await ctx.rebuild();
 				logSuccess(name);
-				reload();
+				await reload();
 			} catch (e) {
 				logError(name, e);
 			}

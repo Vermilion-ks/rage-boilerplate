@@ -44,23 +44,6 @@ const loadingOptions: ToastOptions = {
     },
 }
 
-const waypointOptions: ToastOptions = {
-    ...baseOptions,
-    style: {
-        ...baseOptions.style,
-        border: '1px solid #00BCD4',
-    },
-    icon: '🗺️',
-}
-
-const fireOptions: ToastOptions = {
-    ...baseOptions,
-    style: {
-        ...baseOptions.style,
-        border: '1px solid #FF9800',
-    },
-    icon: '🔥',
-}
 
 export function notification(
     type:
@@ -68,9 +51,7 @@ export function notification(
         | 'success'
         | 'error'
         | 'warning'
-        | 'loading'
-        | 'waypoint'
-        | 'fire',
+        | 'loading',
     message: string,
 ) {
     switch (type) {
@@ -82,10 +63,6 @@ export function notification(
             return warning(message)
         case 'loading':
             return loading(message)
-        case 'waypoint':
-            return waypoint(message)
-        case 'fire':
-            return fire(message)
     }
 }
 
@@ -103,14 +80,6 @@ function warning(message: string) {
 
 function loading(message: string) {
     toast.loading(message, loadingOptions)
-}
-
-function waypoint(message: string) {
-    toast.loading(message, waypointOptions)
-}
-
-function fire(message: string) {
-    toast.error(message, fireOptions)
 }
 
 export default notification
