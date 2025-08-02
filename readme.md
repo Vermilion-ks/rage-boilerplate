@@ -17,11 +17,11 @@ POSTGRES_PASSWORD="password"
 POSTGRES_DB="rage"
 DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}?schema=public"
 ```
-5. Install project dependencies:
-`pnpm install`
-
-6. Start Docker containers:
+5. Start Docker containers:
 `docker compose -f docker-compose.yml up -d`
+
+6. Install project dependencies:
+`pnpm install`
 
 # Build
 
