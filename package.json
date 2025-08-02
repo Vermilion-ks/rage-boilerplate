@@ -1,11 +1,6 @@
 {
 	"name": "rage-boilerplate",
-	"workspaces": [
-		"apps/client",
-		"apps/server",
-		"apps/shared",
-		"apps/webview"
-	],
+	"workspaces": ["apps/client", "apps/server", "apps/shared", "apps/webview"],
 	"scripts": {
 		"start": "cd server && ragemp-server.exe",
 		"[Build]": "",
@@ -54,8 +49,5 @@
 	"peerDependencies": {
 		"typescript": "^5.6.3"
 	},
-	"trustedDependencies": [
-		"@biomejs/biome",
-		"esbuild"
-	]
+	"trustedDependencies": ["@biomejs/biome", "esbuild"]
 }

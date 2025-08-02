@@ -20,6 +20,9 @@ DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/
 5. Start Docker containers:
 `docker compose -f docker-compose.yml up -d`
 
+6. Run Prisma migrate and Enter a name for the new migration: init
+`bunx prisma migrate dev`
+
 6. Install project dependencies:
 `pnpm install`
 

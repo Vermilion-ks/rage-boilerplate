@@ -178,7 +178,7 @@ dist
 .vscode
 
 # Server
-server/bin/*
+server/bin/
 server/node_modules/
 server/.env
 server/maps
