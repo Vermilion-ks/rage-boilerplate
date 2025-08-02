@@ -27,6 +27,10 @@ DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/
 
 `pnpm run build:all`
 
+# Watch changes
+
+`pnpm run watch`
+
 # Startup
 
 `pnpm run start`
