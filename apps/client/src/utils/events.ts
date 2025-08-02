@@ -4,38 +4,34 @@ import { isArray } from "lodash";
 class Events {
 	constructor() {
 		mp.events.subscribe = this.subscribe;
-		mp.events.subscribeToDefault = this.subscribeToDefault;
 		mp.events.subscribeToData = this.subscribeToData;
-
 		mp.events.callServer = this.callServer;
 		mp.events.callBrowser = this.callBrowser;
 		mp.events.reject = this.reject;
 	}
 
-	subscribe(events: { [name: string]: (...args) => any }) {
-		Object.entries(events).forEach(([name, callback]) =>
-			rpc.register(name, (data: any[]) => {
+	subscribe(events: { [name: string]: (...args: unknown[]) => unknown }) {
+		for (const [name, callback] of Object.entries(events)) {
+			rpc.register(name, (data: unknown[]) => {
 				return isArray(data) ? callback(...data) : callback(data);
-			}),
-		);
-	}
-
-	subscribeToDefault(events: { [name: string]: (...args) => void }) {
-		Object.entries(events).forEach(([name, callback]) => {
-			mp.events.add(name, (...args: any[]) => callback(...args));
-		});
+			});
+		}
 	}
 
 	subscribeToData(
 		events: {
-			[name: string]: (entity: EntityMp, data: any, oldData?: any) => void;
+			[name: string]: (
+				entity: EntityMp,
+				data: unknown,
+				oldData?: unknown,
+			) => void;
 		},
 		stream = true,
 	) {
-		Object.entries(events).forEach(([name, callback]) => {
+		for (const [name, callback] of Object.entries(events)) {
 			mp.events.addDataHandler(
 				name,
-				(entity: EntityMp, data: any, oldData?: any) => {
+				(entity: EntityMp, data: unknown, oldData?: unknown) => {
 					if (
 						!stream ||
 						(stream &&
@@ -46,14 +42,14 @@ class Events {
 					}
 				},
 			);
-		});
+		}
 	}
 
-	reject(error: any) {
+	reject(error: unknown) {
 		return new Promise((resolve, reject) => setTimeout(() => reject(error), 1));
 	}
 
-	async callServer(event: string, args?: any, pending = true) {
+	async callServer(event: string, args?: unknown, pending = true) {
 		const promise = rpc.callServer(event, args, { noRet: !pending });
 
 		if (pending) {
@@ -65,7 +61,7 @@ class Events {
 
 	async callBrowser(
 		event: string,
-		args?: any,
+		args?: unknown,
 		pending = true,
 		browser?: BrowserMp,
 	) {

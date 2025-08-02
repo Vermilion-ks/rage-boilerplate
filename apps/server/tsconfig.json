@@ -4,7 +4,11 @@
     "baseUrl": "../..",
     "paths": {
       "@rage/shared": ["apps/shared/index.ts"],
-      "@rage/shared/*": ["apps/shared/*"]
+      "@rage/shared/*": ["apps/shared/*"],
+      "$server/*": ["./apps/server/src/*"],
+			"$client/*": ["./apps/client/src/*"],
+			"$webview/*": ["./apps/webview/src/*"],
+			"$shared/*": ["./apps/shared/src/*"]
     },
     "types": ["@ragempcommunity/types-server"],
     "composite": true,

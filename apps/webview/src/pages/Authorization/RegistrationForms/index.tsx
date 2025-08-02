@@ -96,16 +96,16 @@ const RegistrationForms: FC<Props> = ({ email, onTabSwitch }) => {
         </AuthCard>
     )
 
-    function handleSubmit(values: RegisterSchemaType) {
+    async function handleSubmit(values: RegisterSchemaType) {
         const data = {
             email: values.email.trim().toLowerCase(),
             password: values.password.trim(),
         }
 
-        rpc.callServer('Auth-SignUp', data)
-            .then(() => {
-                return rpc.callClient('Auth-SuccessRegister', data.email)
-            })
+        await rpc.callServer('Auth-SignUp', data)
+            // .then(() => {
+            //     return rpc.callClient('Auth-SuccessRegister', data.email)
+            // })
             .then(() => {
                 notification('success', t(`notification.successRegister`))
                 onTabSwitch(0)

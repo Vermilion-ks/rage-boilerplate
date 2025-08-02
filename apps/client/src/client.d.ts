@@ -12,7 +12,6 @@ interface Mp {
 
 interface EventMpPool {
 	subscribe(events: { [name: string]: (...args) => unknown }): void;
-	subscribeToDefault(events: { [name: string]: (...args) => void }): void;
 	subscribeToData(
 		events: {
 			[name: string]: (

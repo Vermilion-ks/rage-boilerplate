@@ -1,6 +1,11 @@
 {
 	"name": "rage-boilerplate",
-	"workspaces": ["apps/client", "apps/server", "apps/shared", "apps/webview"],
+	"workspaces": [
+		"apps/client",
+		"apps/server",
+		"apps/shared",
+		"apps/webview"
+	],
 	"scripts": {
 		"start": "cd server && ragemp-server.exe",
 		"[Build]": "",
@@ -20,6 +25,7 @@
 		"seed": "tsx prisma/seed.ts"
 	},
 	"dependencies": {
+		"bcryptjs": "^3.0.2",
 		"chalk": "^5.4.1",
 		"chokidar": "^4.0.3",
 		"dotenv": "^16.4.5",
@@ -48,5 +54,8 @@
 	"peerDependencies": {
 		"typescript": "^5.6.3"
 	},
-	"trustedDependencies": ["@biomejs/biome", "esbuild"]
+	"trustedDependencies": [
+		"@biomejs/biome",
+		"esbuild"
+	]
 }

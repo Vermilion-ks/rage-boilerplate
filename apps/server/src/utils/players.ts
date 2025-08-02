@@ -1,5 +1,5 @@
+import PlayerEntity from '$server/player/playerEntity'
 import { isNumber } from 'lodash'
-import PlayerEntity from '../player/playerEntity'
 
 class Players {
     private items: Map<number, Player>

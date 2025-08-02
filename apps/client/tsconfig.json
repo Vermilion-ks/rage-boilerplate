@@ -10,7 +10,8 @@
     "composite": true,
     "lib": [
         "es6",
-        "dom"
+        "dom",
+        "es2017"
     ]
     },
     "include": [

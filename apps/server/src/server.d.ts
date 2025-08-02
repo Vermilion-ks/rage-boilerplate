@@ -55,12 +55,7 @@ type InventoryCapacity = {
 
 interface EventMpPool {
     subscribe(
-        events: { [name: string]: (player: Player, ...args) => any },
-        authorized?: boolean,
-    ): void
-    subscribeToDefault(
-        events: { [name: string]: (...args) => void },
-        authorized?: boolean,
+        events: { [name: string]: (player: Player, ...args) => any }
     ): void
     reject(reason: any): Promise<Error>
 }

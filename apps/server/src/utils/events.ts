@@ -1,15 +1,16 @@
 import rpc from 'rage-rpc'
 import { isArray } from 'lodash'
-
 import logger from './logger'
 import { ClientError } from './errors'
+
 
 
 const eventLogs = logger.create('events')
 
 class Events {
     constructor() {
-        this.setup()
+        mp.events.subscribe = this.subscribe.bind(this)
+        mp.events.reject = this.reject
     }
 
     async callClient(
@@ -32,8 +33,7 @@ class Events {
     }
 
     subscribe(
-        events: { [name: string]: (player: Player, ...args) => any },
-        authorized = true,
+        events: { [name: string]: (player: Player, ...args) => any }
     ) {
         Object.entries(events).forEach(([name, callback]) =>
             rpc.register(name, async (data: null | any[], info) => {
@@ -41,8 +41,7 @@ class Events {
 
                 if (
                     !player ||
-                    player.performing ||
-                    (authorized && !player.uuid)
+                    player.performing
                 ) {
                     eventLogs.info(name)
                     return new Promise((res, rej) => {})
@@ -64,42 +63,14 @@ class Events {
                     if (err instanceof ClientError)
                         return { err: { msg: err.message } }
                     if (!(err instanceof SilentError) && !err.field) {
-                        //console.error(err, `rpc event error "${name}"`);
+                        console.error(err, `rpc event error "${name}"`);
                     }
-
                     return { err }
                 }
             }),
         )
     }
 
-    subscribeToDefault(
-        events: { [name: string]: (...args) => void },
-        authorized = true,
-    ) {
-        Object.entries(events).forEach(([name, callback]) => {
-            mp.events.add(name, async (...args: any[]) => {
-                try {
-                    const [entity, ...data] = args
-                    const player = mp.players.get(entity)
-
-                    if (authorized && !player?.uuid) return
-
-                    callback(player, ...data)
-                } catch (err) {
-                    if (err instanceof SilentError) return
-
-                    console.error(err, `default event error "${name}"`)
-                }
-            })
-        })
-    }
-
-    private setup() {
-        mp.events.subscribe = this.subscribe.bind(this)
-        mp.events.subscribeToDefault = this.subscribeToDefault.bind(this)
-        mp.events.reject = this.reject
-    }
 }
 
 export default new Events()

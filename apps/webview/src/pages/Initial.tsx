@@ -10,8 +10,8 @@ const Initial: FC = () => {
     const navigate = useNavigate()
     const { t } = useTranslation()
     useEffect(() => {
-        rpc.register<string>('Browser-ShowPage', (page, data) => {
-            navigate(page, { state: data })
+        rpc.register<{ page: string; args: unknown[] }>('Browser-ShowPage', (data) => {
+            navigate(data.page, { state: data.args })
         })
         rpc.register<{ type: NotificationType; message: string }>('Browser-Notification', (data) => {
             notification(data.type, t(data.message))
