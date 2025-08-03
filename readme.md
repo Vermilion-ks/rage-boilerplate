@@ -8,31 +8,20 @@
 
 3. Download and install Docker Desktop [link](https://www.docker.com)
 
-4. Create .env files:
-- One in the project root
-- One inside the `server/` folder
-```
-POSTGRES_USER="root"
-POSTGRES_PASSWORD="password"
-POSTGRES_DB="rage"
-DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}?schema=public"
-```
+4. Rename end edit the `.env.example` file to `.env` in the project root:
+
 5. Start Docker containers:
 `docker compose -f docker-compose.yml up -d`
 
 6. Install project dependencies:
 `pnpm install`
 
-7. Run Prisma migrate and Enter a name for the new migration: init
-`bunx prisma migrate dev`
+7. Setup database
+`pnpm run prisma:setup`
 
 # Build
 
 `pnpm run build:all`
-
-# Watch changes
-
-`pnpm run watch`
 
 # Startup
 

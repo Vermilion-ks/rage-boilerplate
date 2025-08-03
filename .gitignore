@@ -187,8 +187,6 @@ server/packages
 server/plugins
 server/BugTrap-x64.dll
 server/ragemp-server.exe
-server/.env.example
-.env.example
 pnpm-lock.yaml
 
 

@@ -14,6 +14,10 @@ async function buildServer() {
 				src: "./node_modules/@prisma/client",
 				dest: "./server/node_modules/.prisma/client",
 			}),
+			copyStaticFiles({
+				src: "./.env",
+				dest: "./server/.env",
+			}),
 		],
 		external: [
 			"@prisma/client",
